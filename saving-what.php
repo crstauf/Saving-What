@@ -67,7 +67,6 @@ class css_saving_what {
 				$(document).on('heartbeat-tick',function(e,data) {
 					saving_what_items = $('form#post').find('*[name]:input');
 					if (saving_what_items.length != saving_what_item_count) {
-						console.log('different');
 						var i = saving_what_item_count;
 						saving_what_item_count = saving_what_items.length;
 						saving_what_items.not('.saving-what-item').each(function() {
