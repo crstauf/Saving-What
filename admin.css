@@ -1,0 +1,73 @@
+/* css file for saving-what */
+
+table#saving-what-table,
+table#saving-what-table * {
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-size: 11px;
+}
+
+	table#saving-what-table { position: relative; width: 100%; }
+
+table#saving-what-table thead {
+	/*position: fixed;
+	top: 32px;
+	z-index: 2;*/
+	background-color: #FFF;
+	border-bottom: 1px solid #999;
+}
+
+table#saving-what-table thead td { cursor: pointer; }
+
+table#saving-what-table tr { width: 100%; }
+
+table#saving-what-table tbody tr:nth-child(even) { background-color: #F3F3F3; }
+
+	table#saving-what-table tbody tr:hover { background-color: #DDD; }
+
+table#saving-what-table td { padding: 8px 5px; }
+
+	table#saving-what-table td.item-num { width: 30px; }
+
+	table#saving-what-table td.item-id {
+		min-width: 220px;
+		width: 25%;
+	}
+
+	table#saving-what-table td.item-name {
+		min-width: 210px;
+		width: 25%;
+	}
+
+	table#saving-what-table td.item-type,
+	table#saving-what-table td.item-type span {
+		line-height: normal;
+		font-size: 11px;
+		color: #000;
+	}
+
+		table#saving-what-table td.item-type	{
+			display: table-cell;
+			min-width: 80px;
+			width: 10%;
+		}
+
+	table#saving-what-table td.item-value {
+		position: relative;
+		text-indent: -9999px;
+	}
+
+		table#saving-what-table thead td.item-value { text-indent: 0; }
+
+	table#saving-what-table tbody tr.updated td { color: #FF0000; }
+
+table#saving-what-table td.item-value input {
+	position: absolute;
+	left: 5px;
+	top: 6px;
+	width: 98%;
+	padding: 3px 5px;
+	font-size: 11px;
+}
