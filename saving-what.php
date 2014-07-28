@@ -52,6 +52,8 @@ class css_saving_what {
 			</thead>
 			<tbody>
 			</tbody>
+			<tfoot>
+			</tfoot>
 		</table>
 
 		<?php
@@ -64,16 +66,14 @@ class css_saving_what {
 			(function($) {
 				$(document).on('heartbeat-tick',function(e,data) {
 					saving_what_items = $('form#post').find('*[name]:input');
-					console.log('tick ' + $.now() + ': ' + saving_what_items.length);
 					if (saving_what_items.length != saving_what_item_count) {
+						console.log('different');
 						var i = saving_what_item_count;
 						saving_what_item_count = saving_what_items.length;
 						saving_what_items.not('.saving-what-item').each(function() {
-							alert($(this).val());
 							i++;
 							$(this).addSavingWhatItem($("table#saving-what-table"),i,true);
-						}).change(function() {
-							$(this).changeSavingWhatItem($("table#saving-what-table"));
+							$(this).change(function() { $(this).changeSavingWhatItem($("table#saving-what-table")); });
 						});
 					}
 				});
