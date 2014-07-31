@@ -32,7 +32,7 @@ jQuery(function($) {
 		var id 					= '<td class="item-id">' + item_id + '</td>';
 		var name				= '<td class="item-name">' + item_name + '</td>';
 		var type 				= '<td class="item-type">' + item_type + '</td>';
-		var value				= '<td class="item-value">' + item_value + '<input type="text" value="' + item_value + '" readonly="readonly" /></td>';
+		var value				= '<td class="item-value"><textarea rows="1" disabled="disabled">' + item_value + '</textarea></td>';
 
 		var num 				= i + "";
 		while (num.length < 3)	num = "0" + num;
