@@ -73,7 +73,7 @@ table#saving-what-table td { padding: 8px 0; }
 
 	table#saving-what-table td.item-value {
 		position: relative;
-		text-indent: -99999px;
+		/*text-indent: -99999px;*/
 		overflow: hidden;
 	}
 
@@ -91,3 +91,5 @@ table#saving-what-table td.item-value textarea {
 	padding: 3px 5px;
 	font-size: 11px;
 }
+
+	table#saving-what-table td.item-value textarea:disabled { color: #333; }

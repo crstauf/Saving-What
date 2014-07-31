@@ -14,8 +14,10 @@ jQuery(function($) {
 		if ("undefined" !== typeof $(this).attr('id') && false !== $(this).attr('id'))
 			item_id 			= '#' + $(this).attr('id');
 
-		if ("undefined" !== typeof $(this).attr('value') && false !== $(this).attr('value'))
-			item_value			= $(this).val();
+		if ("undefined" !== typeof $(this).attr('value') && false !== $(this).attr('value')) {
+			if ('#content' == item_id)	item_value	= '{SKIPPED}';
+			else						item_value	= $(this).val();
+		}
 
 		if ("undefined" !== typeof $(this).attr('type') && false !== $(this).attr('type'))
 			item_type			= $(this).attr('type');
@@ -31,8 +33,14 @@ jQuery(function($) {
 
 		var id 					= '<td class="item-id">' + item_id + '</td>';
 		var name				= '<td class="item-name">' + item_name + '</td>';
-		var type 				= '<td class="item-type">' + item_type + '</td>';
-		var value				= '<td class="item-value"><textarea rows="1" disabled="disabled">' + item_value + '</textarea></td>';
+
+		if ('hidden' == item_type)
+			var type 			= '<td class="item-type"><a href="#" class="input-toText">' + item_type + '</a></td>';
+		else if ('none' == $(item_id).css('display') || '#content' == item_id)
+			var type			= '<td class="item-type">' + item_type + '</td>';
+		else var type 			= '<td class="item-type">' + item_type + '</td>';
+
+		var value				= '<td class="item-value">' + item_value + '<textarea rows="1" disabled="disabled" style="display: none;">' + item_value + '</textarea></td>';
 
 		var num 				= i + "";
 		while (num.length < 3)	num = "0" + num;
@@ -86,7 +94,7 @@ jQuery(function($) {
 		});
 	};
 
-	$(document).ready(function() {
+	$("form#post").ready(function() {
 
 		var form					= $("form#post");
 		saving_what_item_count		= saving_what_items.length;
@@ -135,6 +143,16 @@ jQuery(function($) {
                 
         });
 
+	});
+
+	$(document).on('click',"table#saving-what-table tbody a.input-toText",function(ev) {
+		ev.preventDefault();
+		var tr = $(this).closest('tr');
+		var id = tr.find('td.item-id').html();
+		if ('text' != $(id).attr('type'))
+			$(this).html('text');
+		else $(this).html('hidden');
+		$(id).attr('type','text');
 	});
 
 	$(window).scroll(function() {
