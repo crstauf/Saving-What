@@ -15,8 +15,10 @@ jQuery(function($) {
 			item_id 			= '#' + $(this).attr('id');
 
 		if ("undefined" !== typeof $(this).attr('value') && false !== $(this).attr('value')) {
-			if ('#content' == item_id)	item_value	= '{SKIPPED}';
-			else						item_value	= $(this).val();
+			if ('#content' == item_id)	{
+				item_value		= $(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+				item_value		= item_value.length > 87 ? item_value.substr(0,87) + '...' : item_value;
+			} else item_value	= $(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 		}
 
 		if ("undefined" !== typeof $(this).attr('type') && false !== $(this).attr('type'))
@@ -149,10 +151,13 @@ jQuery(function($) {
 		ev.preventDefault();
 		var tr = $(this).closest('tr');
 		var id = tr.find('td.item-id').html();
-		if ('text' != $(id).attr('type'))
+		if ('text' != $(id).attr('type')) {
 			$(this).html('text');
-		else $(this).html('hidden');
-		$(id).attr('type','text');
+			$(id).attr('type','text');
+		} else {
+			$(this).html('hidden');
+			$(id).attr('type','hidden');
+		}
 	});
 
 	$(window).scroll(function() {

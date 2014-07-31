@@ -44,7 +44,7 @@ table#saving-what-table tbody tr:nth-child(even) { background-color: #F3F3F3; }
 
 	table#saving-what-table tbody tr:hover { background-color: #DDD; }
 
-table#saving-what-table td { padding: 8px 0; }
+table#saving-what-table td { padding: 8px 0; vertical-align: top; }
 
 	table#saving-what-table td.item-num { width: 30px; }
 
@@ -67,8 +67,8 @@ table#saving-what-table td { padding: 8px 0; }
 
 		table#saving-what-table td.item-type	{
 			display: table-cell;
-			min-width: 80px;
-			width: 10%;
+			min-width: 90px;
+			width: 15%;
 		}
 
 	table#saving-what-table td.item-value {
