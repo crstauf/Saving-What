@@ -28,7 +28,7 @@ class css_saving_what {
 	public static function scripts() {
 		global $current_screen;
 		if ('post' != $current_screen->base) return;
-		wp_enqueue_script('sortElements',plugin_dir_url(__FILE__) . 'jQuery.sortElements.js',array('jquery'));
+		wp_enqueue_script('sortElements',plugin_dir_url(__FILE__) . 'jquery.sortElements.js',array('jquery'));
 		wp_enqueue_script('saving-what',plugin_dir_url(__FILE__) . 'admin.js',array('jquery','heartbeat','sortElements'));
 		wp_enqueue_style('saving-what',plugin_dir_url(__FILE__) . 'admin.css');
 	}
