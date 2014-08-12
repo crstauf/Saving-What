@@ -86,7 +86,7 @@ jQuery(function($) {
 				var id 			= '<td class="item-id code">' + item_id + '</td>';
 				var name		= '<td class="item-name code">' + item_name + '</td>';
 				var type 		= '<td class="item-type code">' + item_type + '</td>';
-				var value		= '<td class="item-value">' + item_value + '<input type="text" value="' + item_value + '" readonly="readonly" /></td>';
+				var value		= '<td class="item-value">' + item_value + '</td>';
 
 				$(this).remove();
 				table.find('tbody').prepend('<tr class="updated" id="form-item-' + parseInt(i) + '">' + num + id + name + type + value + '</td></tr>');
