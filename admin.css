@@ -9,7 +9,7 @@ table#saving-what-table * {
 	font-size: 11px;
 }
 
-	table#saving-what-table { position: relative; width: 100%; }
+	table#saving-what-table { position: relative; width: 100%; max-width: 100%; }
 
 table#saving-what-table thead {
 	background-color: #FFF;
@@ -84,12 +84,14 @@ table#saving-what-table td { padding: 8px 0; vertical-align: top; }
 	table#saving-what-table tbody tr.added td { color: #4a4; }
 
 table#saving-what-table td.item-value textarea {
-	position: absolute;
+	/*position: absolute;
 	left: 5px;
-	top: 6px;
+	top: 6px;*/
 	width: 98%;
+	max-width: 98%;
 	padding: 3px 5px;
 	font-size: 11px;
+	resize: vertical;
 }
 
 	table#saving-what-table td.item-value textarea:disabled { color: #333; }

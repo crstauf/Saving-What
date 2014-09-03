@@ -31,6 +31,9 @@ jQuery(function($) {
 		if ($(this).is(':checked'))
 			item_type			+= '/checked';
 
+		if (60 < item_value.length)
+			item_value = '<textarea rows="2" readonly="readonly">' + item_value + '</textarea>';
+
 		$(this).addClass('saving-what-item saving-what-item-' + i);
 
 		var id 					= '<td class="item-id">' + item_id + '</td>';
@@ -72,6 +75,9 @@ jQuery(function($) {
 			item_type			= 'select';
 		else if ($(this).is('textarea'))
 			item_type			= 'textarea';
+
+		if (60 < item_value.length)
+			item_value = '<textarea rows="2" readonly="readonly">' + item_value + '</textarea>';
 
 		var found = false;
 		table.find('tbody tr').each(function() {
