@@ -45,7 +45,7 @@ jQuery(function($) {
 			var type			= '<td class="item-type">' + item_type + '</td>';
 		else var type 			= '<td class="item-type">' + item_type + '</td>';
 
-		var value				= '<td class="item-value">' + item_value + '<textarea rows="1" disabled="disabled" style="display: none;">' + item_value + '</textarea></td>';
+		var value				= '<td class="item-value">' + item_value + '</td>';
 
 		var num 				= i + "";
 		while (num.length < 3)	num = "0" + num;
