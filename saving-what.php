@@ -65,15 +65,26 @@ class css_saving_what {
 		<script>
 			(function($) {
 				$(document).on('heartbeat-tick',function(e,data) {
-					saving_what_items = $('form#post').find('*[name]:input');
-					if (saving_what_items.length != saving_what_item_count) {
-						var i = saving_what_item_count;
-						saving_what_item_count = saving_what_items.length;
-						saving_what_items.not('.saving-what-item').each(function() {
-							i++;
-							$(this).addSavingWhatItem($("table#saving-what-table"),i,true);
-							$(this).change(function() { $(this).changeSavingWhatItem($("table#saving-what-table")); });
-						});
+					if ($("#saving-what").hasClass('closed') && typeof HBMonitor_time === 'function')
+						HBMonitor_time('Saving What: postbox closed');
+					else {
+						saving_what_items = $('form#post').find('*[name]:input');
+						if (saving_what_items.length != saving_what_item_count) {
+							var i = saving_what_item_count;
+							if ("undefined" == typeof saving_what_item_count)
+								var new_fields = 'just getting started'
+							else
+								var new_fields = (parseInt(saving_what_items.length) - parseInt(saving_what_item_count)) + ' new fields';
+							saving_what_item_count = saving_what_items.length;
+							saving_what_items.not('.saving-what-item').each(function() {
+								i++;
+								$(this).addSavingWhatItem($("table#saving-what-table"),i,true);
+								$(this).change(function() { $(this).changeSavingWhatItem($("table#saving-what-table")); });
+							});
+							if (typeof HBMonitor_time === 'function')
+								HBMonitor_time('Saving What: ' + new_fields);
+						} else if (typeof HBMonitor_time === 'function')
+							HBMonitor_time('Saving What: no new fields');
 					}
 				});
 			}(jQuery));

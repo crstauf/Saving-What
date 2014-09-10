@@ -102,11 +102,16 @@ jQuery(function($) {
 		});
 	};
 
-	$("form#post").ready(function() {
+	function saving_what_update() {
+		var form	= $("form#post");
+		var table	= $("table#saving-what-table");
 
-		var form					= $("form#post");
-		saving_what_item_count		= saving_what_items.length;
-		var table					= $("table#saving-what-table");
+		if ($("#saving-what").hasClass('closed')) {
+			table.find('tbody').html('');
+			return;
+		}
+
+		saving_what_item_count = saving_what_items.length;
 
 		var w = table.width();
 		table.find('thead').css('width',w + 'px').attr('data-scrolltop',table.find('thead').offset().top);
@@ -150,8 +155,10 @@ jQuery(function($) {
             });
                 
         });
+	}
 
-	});
+	$("form#post").ready(saving_what_update);
+	$("#saving-what").click(saving_what_update);
 
 	$(document).on('click',"table#saving-what-table tbody a.input-toText",function(ev) {
 		ev.preventDefault();
