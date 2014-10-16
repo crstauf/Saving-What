@@ -18,7 +18,12 @@ jQuery(function($) {
 			if ('#content' == item_id)	{
 				item_value		= $(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 				item_value		= item_value.length > 87 ? item_value.substr(0,87) + '...' : item_value;
-			} else item_value	= $(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+			} else {
+				item_value	= $(this).attr('value').replace(/&/g, '&amp;');
+				item_value	= item_value.replace(/</g, '&lt;');
+				item_value	= item_value.replace(/>/g, '&gt;');
+				item_value	= item_value.replace(/"/g, '&quot;');
+			}
 		}
 
 		if ("undefined" !== typeof $(this).attr('type') && false !== $(this).attr('type'))
